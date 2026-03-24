@@ -164,7 +164,48 @@ body {
   width: 4px;
   background: linear-gradient(180deg, var(--surface-gray), var(--plum), var(--horizon), #E8A090, var(--surface-gray));
 }
-.hero-inner { position: relative; z-index: 1; max-width: 720px; }
+.hero-inner { position: relative; z-index: 1; display: flex; align-items: center; gap: 40px; }
+.hero-text { flex: 1; min-width: 0; max-width: 520px; }
+.hero-video {
+  flex: 0 0 340px;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+  background: #000;
+}
+.hero-video video,
+.hero-video iframe {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 0;
+}
+.hero-video .video-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 16 / 9;
+  color: var(--surface-gray);
+  font-family: var(--mono);
+  font-size: 12px;
+  gap: 8px;
+}
+.hero-video .video-placeholder .play-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 2px solid var(--surface-gray);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+@media (max-width: 900px) {
+  .hero-inner { flex-direction: column; }
+  .hero-video { flex: none; width: 100%; max-width: 400px; }
+}
 .hero-tag {
   display: inline-flex; align-items: center; gap: 6px;
   font-family: var(--mono);
@@ -486,14 +527,28 @@ body {
     <!-- HERO -->
     <div class="hero" id="overview">
       <div class="hero-inner">
-        <div class="hero-tag">CSM · Deployment Guide · v1.0</div>
-        <h1>Opportunity Insights<br><span>Deployment Toolkit</span></h1>
-        <p class="hero-sub">Deploy all 8 EDB tables and a navigation board to any People.ai customer instance in minutes. Run each script from the browser console on app.people.ai — no API keys, no backend access required.</p>
-        <div class="hero-stats">
-          <div class="stat"><div class="stat-num">8</div><div class="stat-label">EDB Tables</div></div>
-          <div class="stat"><div class="stat-num">1</div><div class="stat-label">Navigation Board</div></div>
-          <div class="stat"><div class="stat-num">3</div><div class="stat-label">Deployment Steps</div></div>
-          <div class="stat"><div class="stat-num">~15<span style="font-size:14px;font-weight:400">min</span></div><div class="stat-label">Total Setup Time</div></div>
+        <div class="hero-text">
+          <div class="hero-tag">CSM · Deployment Guide · v1.0</div>
+          <h1>Opportunity Insights<br><span>Deployment Toolkit</span></h1>
+          <p class="hero-sub">Deploy all 8 EDB tables and a navigation board to any People.ai customer instance in minutes. Run each script from the browser console on app.people.ai — no API keys, no backend access required.</p>
+          <div class="hero-stats">
+            <div class="stat"><div class="stat-num">8</div><div class="stat-label">EDB Tables</div></div>
+            <div class="stat"><div class="stat-num">1</div><div class="stat-label">Navigation Board</div></div>
+            <div class="stat"><div class="stat-num">3</div><div class="stat-label">Deployment Steps</div></div>
+            <div class="stat"><div class="stat-num">~15<span style="font-size:14px;font-weight:400">min</span></div><div class="stat-label">Total Setup Time</div></div>
+          </div>
+        </div>
+        <div class="hero-video" id="hero-video">
+          <!-- REPLACE THIS PLACEHOLDER with one of:
+               Loom:    <iframe src="https://www.loom.com/embed/YOUR_VIDEO_ID" allowfullscreen></iframe>
+               YouTube: <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID" allowfullscreen></iframe>
+               MP4:     <video src="demo.mp4" autoplay muted loop playsinline></video>
+          -->
+          <div class="video-placeholder">
+            <div class="play-icon">▶</div>
+            <span>Deployment Walkthrough</span>
+            <span style="font-size:10px;color:var(--text-dim);">Video coming soon</span>
+          </div>
         </div>
       </div>
     </div>
