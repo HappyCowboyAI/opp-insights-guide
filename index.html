@@ -174,33 +174,86 @@ body {
   box-shadow: 0 8px 32px rgba(0,0,0,0.3);
   background: #000;
 }
-.hero-video video,
-.hero-video iframe {
+.hero-video {
+  cursor: pointer;
+  position: relative;
+}
+.hero-video video {
   display: block;
   width: 100%;
   aspect-ratio: 16 / 9;
+  object-fit: cover;
   border: 0;
 }
-.hero-video .video-placeholder {
+.hero-video .play-overlay {
+  position: absolute;
+  inset: 0;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  aspect-ratio: 16 / 9;
-  color: var(--surface-gray);
-  font-family: var(--mono);
-  font-size: 12px;
-  gap: 8px;
+  background: rgba(0,0,0,0.3);
+  transition: background 0.2s;
 }
-.hero-video .video-placeholder .play-icon {
-  width: 48px;
-  height: 48px;
+.hero-video:hover .play-overlay {
+  background: rgba(0,0,0,0.15);
+}
+.play-overlay .play-circle {
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
-  border: 2px solid var(--surface-gray);
+  background: rgba(255,255,255,0.9);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 18px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+  transition: transform 0.2s;
+}
+.hero-video:hover .play-circle { transform: scale(1.08); }
+.play-circle svg { margin-left: 3px; }
+
+/* Lightbox */
+.video-lightbox {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background: rgba(0,0,0,0.85);
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  cursor: pointer;
+}
+.video-lightbox.open { display: flex; }
+.video-lightbox video {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 10px;
+  box-shadow: 0 12px 48px rgba(0,0,0,0.5);
+  cursor: default;
+}
+.lightbox-close {
+  position: absolute;
+  top: 20px;
+  right: 28px;
+  color: white;
+  font-size: 32px;
+  font-weight: 300;
+  cursor: pointer;
+  font-family: var(--sans);
+  opacity: 0.7;
+  transition: opacity 0.2s;
+  line-height: 1;
+}
+.lightbox-close:hover { opacity: 1; }
+.lightbox-hint {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(255,255,255,0.5);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.05em;
 }
 @media (max-width: 900px) {
   .hero-inner { flex-direction: column; }
@@ -538,9 +591,21 @@ body {
             <div class="stat"><div class="stat-num">~15<span style="font-size:14px;font-weight:400">min</span></div><div class="stat-label">Total Setup Time</div></div>
           </div>
         </div>
-        <div class="hero-video" id="hero-video">
+        <div class="hero-video" id="hero-video" onclick="openVideoLightbox()">
           <video src="installvideo_web.mp4" autoplay muted loop playsinline></video>
+          <div class="play-overlay">
+            <div class="play-circle">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="var(--graphite)"><polygon points="6,3 20,12 6,21"/></svg>
+            </div>
+          </div>
         </div>
+
+    <!-- Video Lightbox -->
+    <div class="video-lightbox" id="videoLightbox" onclick="closeVideoLightbox(event)">
+      <span class="lightbox-close" onclick="closeVideoLightbox(event)">&times;</span>
+      <video id="lightboxVideo" src="installvideo_full.mp4" controls playsinline></video>
+      <div class="lightbox-hint">ESC or click outside to close</div>
+    </div>
       </div>
     </div>
 
@@ -1229,6 +1294,27 @@ function copyBoardScript() {
 // ─────────────────────────────────────────────────────────────────────────────
 // SCRIPT GENERATORS
 // ─────────────────────────────────────────────────────────────────────────────
+// ── VIDEO LIGHTBOX ──
+function openVideoLightbox() {
+  const lb = document.getElementById('videoLightbox');
+  const vid = document.getElementById('lightboxVideo');
+  lb.classList.add('open');
+  vid.currentTime = 0;
+  vid.play();
+  document.addEventListener('keydown', lightboxEsc);
+}
+function closeVideoLightbox(e) {
+  if (e && e.target.tagName === 'VIDEO') return; // don't close when clicking video controls
+  const lb = document.getElementById('videoLightbox');
+  const vid = document.getElementById('lightboxVideo');
+  lb.classList.remove('open');
+  vid.pause();
+  document.removeEventListener('keydown', lightboxEsc);
+}
+function lightboxEsc(e) {
+  if (e.key === 'Escape') closeVideoLightbox();
+}
+
 function makeConsoleScript(payload) {
   return `(async () => {
   const r = await fetch('/api/authentication/refresh-token');
