@@ -198,7 +198,7 @@ body {
 
   <div class="faq-item">
     <div class="faq-q">Script says "Not logged in"</div>
-    <div class="faq-a">The script checks your People.ai session. You must be on <strong>app.people.ai</strong> and logged in BEFORE running the script. Navigate to app.people.ai, verify you see the dashboard, then open DevTools and run the script.</div>
+    <div class="faq-a">The script checks your Backstory session. You must be on <strong>app.people.ai</strong> and logged in BEFORE running the script. Navigate to app.people.ai, verify you see the dashboard, then open DevTools and run the script.</div>
   </div>
 
   <div class="faq-item">
@@ -208,12 +208,12 @@ body {
 
   <div class="faq-item">
     <div class="faq-q">Table created but columns are empty</div>
-    <div class="faq-a">The metric may not be enabled for this customer's instance. OOTB metrics should all be available, but some require activity capture to have been running for <strong>at least 7 days</strong>. Check with People.ai support if core metrics like <code>engagement_level</code> show as blank.</div>
+    <div class="faq-a">The metric may not be enabled for this customer's instance. OOTB metrics should all be available, but some require activity capture to have been running for <strong>at least 7 days</strong>. Check with Backstory support if core metrics like <code>engagement_level</code> show as blank.</div>
   </div>
 
   <div class="faq-item">
     <div class="faq-q">I see duplicate tables</div>
-    <div class="faq-a">Each script run creates a new table. If you ran it twice, you'll have two. Delete the duplicate from <strong>EDB (Explore Data Builder)</strong> in People.ai.</div>
+    <div class="faq-a">Each script run creates a new table. If you ran it twice, you'll have two. Delete the duplicate from <strong>EDB (Explore Data Builder)</strong> in Backstory.</div>
   </div>
 
   <div class="faq-item">
@@ -235,7 +235,7 @@ body {
 
   <div class="faq-item">
     <div class="faq-q">Where do I create custom metrics?</div>
-    <div class="faq-a">Navigate to <strong>People.ai Admin &rarr; Custom Metrics &rarr; Metric Builder</strong>. See the <a href="custom-metrics.html" style="color: var(--accent);">Custom Metrics Guide</a> for full JSON definitions.</div>
+    <div class="faq-a">Navigate to <strong>Backstory Admin &rarr; Custom Metrics &rarr; Metric Builder</strong>. See the <a href="custom-metrics.html" style="color: var(--accent);">Custom Metrics Guide</a> for full JSON definitions.</div>
   </div>
 
   <div class="faq-item">
@@ -279,7 +279,7 @@ body {
 
   <div class="faq-item">
     <div class="faq-q">Slack bot runs but nothing posts back</div>
-    <div class="faq-a">Check n8n execution logs for which node failed. Most common causes: <strong>People.ai auth token expired</strong> (re-check client_id/client_secret) or the <strong>response_url from Slack has expired</strong> (Slack URLs expire after 30 minutes).</div>
+    <div class="faq-a">Check n8n execution logs for which node failed. Most common causes: <strong>Backstory auth token expired</strong> (re-check client_id/client_secret) or the <strong>response_url from Slack has expired</strong> (Slack URLs expire after 30 minutes).</div>
   </div>
 
   <div class="faq-item">
@@ -296,11 +296,11 @@ body {
 
   <div class="faq-item">
     <div class="faq-q">What data does Opportunity Insights use?</div>
-    <div class="faq-a">100% OOTB People.ai metrics &mdash; engagement level, meeting counts, email counts, days in stage, close dates, executive engagement. <strong>No custom fields, no org-specific fields, no SalesAI dependency</strong> for the base product.</div>
+    <div class="faq-a">100% OOTB Backstory metrics &mdash; engagement level, meeting counts, email counts, days in stage, close dates, executive engagement. <strong>No custom fields, no org-specific fields, no SalesAI dependency</strong> for the base product.</div>
   </div>
 
   <div class="faq-item">
-    <div class="faq-q">Does this work for any People.ai customer?</div>
+    <div class="faq-q">Does this work for any Backstory customer?</div>
     <div class="faq-a">Yes. All metrics use the <code>ootb_</code> prefix and are core platform metrics available on every instance. The only requirement is that <strong>activity capture is running</strong> and engagement scores are populating.</div>
   </div>
 

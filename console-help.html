@@ -327,9 +327,9 @@ h1 {
   <div class="step">
     <div class="step-header">
       <div class="step-num">1</div>
-      <div class="step-title">Navigate to People.ai</div>
+      <div class="step-title">Navigate to Backstory</div>
     </div>
-    <p>Open <strong>app.people.ai</strong> in Google Chrome and make sure you're logged in. You should see your normal People.ai dashboard.</p>
+    <p>Open <strong>app.people.ai</strong> in Google Chrome and make sure you're logged in. You should see your normal Backstory dashboard.</p>
     <div class="callout tip">
       <strong>Why Chrome?</strong> These scripts work in any modern browser, but Chrome's DevTools are the most widely documented. The steps below show Chrome — Safari and Edge are similar.
     </div>
@@ -393,7 +393,7 @@ h1 {
     </div>
     <p>Click into the Console area and press <span class="kbd">⌘</span> <span class="kbd">V</span> (Mac) or <span class="kbd">Ctrl</span> <span class="kbd">V</span> (Windows) to paste.</p>
     <div class="callout warn">
-      <strong>First time?</strong> Chrome may show a warning: <em>"Don't paste code into the DevTools Console."</em> This is a security feature to prevent scam attacks. Since you're running a trusted People.ai deployment script, type <code>allow pasting</code> and press Enter. Then paste the script again.
+      <strong>First time?</strong> Chrome may show a warning: <em>"Don't paste code into the DevTools Console."</em> This is a security feature to prevent scam attacks. Since you're running a trusted Backstory deployment script, type <code>allow pasting</code> and press Enter. Then paste the script again.
     </div>
     <div class="screenshot">
       <div class="screenshot-bar">
@@ -433,7 +433,7 @@ h1 {
       </div>
       <div class="screenshot-body">
         <span class="prompt">&gt;</span> (async () => { ... })()</span><br>
-        <span class="comment">// Verifying People.ai session...</span><br>
+        <span class="comment">// Verifying Backstory session...</span><br>
         <span class="comment">// Creating EDB table...</span><br>
         <span class="success">✅ Created! ID: 12345 → https://app.people.ai/table/12345</span>
       </div>
@@ -449,7 +449,7 @@ h1 {
     </div>
     <p>After the script runs, it logs the created table ID in the console (e.g., <code>ID: 12345</code>). Copy this number and paste it into the <strong>ID field</strong> on the Deployment Guide page — this feeds the board generator in Step 3.</p>
     <div class="callout tip">
-      <strong>Done!</strong> You can close DevTools now. The table is saved in People.ai and will persist. You can find it anytime under Explore Data Builder in People.ai.
+      <strong>Done!</strong> You can close DevTools now. The table is saved in Backstory and will persist. You can find it anytime under Explore Data Builder in Backstory.
     </div>
   </div>
 
@@ -484,7 +484,7 @@ h1 {
 
     <div class="faq-item">
       <div class="faq-q">Is it safe to paste scripts into the console?</div>
-      <div class="faq-a">Only paste scripts from trusted sources. The Opportunity Insights scripts are internal People.ai deployment tools that create EDB tables and boards using the Glass API. They don't access, modify, or export any customer data — they only create view configurations.</div>
+      <div class="faq-a">Only paste scripts from trusted sources. The Opportunity Insights scripts are internal Backstory deployment tools that create EDB tables and boards using the Glass API. They don't access, modify, or export any customer data — they only create view configurations.</div>
     </div>
 
     <div class="faq-item">
